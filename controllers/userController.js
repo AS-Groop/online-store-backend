@@ -27,7 +27,7 @@ class UserController {
     const user = await User.create({email, role, password: hashPassword})
     const basket = await Basket.create({userId: user.id})
     const token = generateJWT(user.id, user.email, user.role)
-    return res.json({...user,token})
+    return res.json({token})
   }
   async login(req, res, next) {
     const {email, password} = req.body
